@@ -14,4 +14,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 8080
 
 # Jalankan aplikasi
-CMD ["python", "app.py"]
+CMD ["gunicorn", "-b", ":8080", "app:app"]
