@@ -172,3 +172,11 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Custom ignores (credentials, API keys, local config)
+service_account.json
+credentials.json
+config.json
+*.json
+!spendeebot.jsonl
+.env
