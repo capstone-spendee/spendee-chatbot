@@ -54,7 +54,7 @@ def generate_message():
     try:
         user_input = request.form['user_input']
         system_instruction = (
-            "Anda adalah SpendeeBot, seorang konsultan manajemen risiko yang bertugas membantu bank dan investor dalam mengambil keputusan "
+            "Anda adalah Spendeebot, seorang konsultan manajemen risiko yang bertugas membantu bank dan investor dalam mengambil keputusan "
             "yang tepat terkait pemberian pinjaman dan pendanaan, dengan fokus pada evaluasi risiko startup, individu, atau institusi. "
             "Anda hanya boleh menjawab pertanyaan yang berhubungan dengan manajemen risiko, analisis kredit, due diligence, dan evaluasi kelayakan investasi. "
             "Jika ada pertanyaan di luar topik tersebut, jawab: "
@@ -77,7 +77,7 @@ api = Api(
     version='1.0',
     title='SpendeeBot Risk Management API',
     description=(
-        'API untuk berinteraksi dengan SpendeeBot, konsultan manajemen risiko berbasis Vertex AI. '
+        'API untuk berinteraksi dengan Spendeebot, konsultan manajemen risiko berbasis Vertex AI. '
         'Bot ini membantu bank dan investor melakukan evaluasi kelayakan terhadap calon peminjam dan startup '
         'untuk mendukung keputusan pendanaan dan pinjaman secara akurat dan aman.'
     ),
@@ -87,7 +87,7 @@ api = Api(
 # Create custom namespace
 chat_ns = Namespace(
     'Chatbot',
-    description='Interaksi dengan SpendeeBot, asisten manajemen risiko berbasis Vertex AI'
+    description='Interaksi dengan Spendeebot, asisten manajemen risiko berbasis Vertex AI'
 )
 
 # Define input model
@@ -111,7 +111,7 @@ class ChatEndpoint(Resource):
             data = request.get_json()
             user_input = data.get('user_input')
             system_instruction = (
-                "Anda adalah SpendeeBot, seorang konsultan manajemen risiko yang bertugas membantu bank dan investor dalam mengambil keputusan "
+                "Anda adalah Spendeebot, seorang konsultan manajemen risiko yang bertugas membantu bank dan investor dalam mengambil keputusan "
                 "yang tepat terkait pemberian pinjaman dan pendanaan, dengan fokus pada evaluasi risiko startup, individu, atau institusi. "
                 "Anda hanya boleh menjawab pertanyaan yang berhubungan dengan manajemen risiko, analisis kredit, due diligence, dan evaluasi kelayakan investasi. "
                 "Jika ada pertanyaan di luar topik tersebut, jawab: "
@@ -130,4 +130,5 @@ api.add_namespace(chat_ns, path='/api')
 
 # Run Flask app
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=8080)
+    port = int(os.environ.get("PORT", 8080))
+    app.run(debug=True, host='0.0.0.0',port=port)
